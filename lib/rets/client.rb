@@ -322,7 +322,7 @@ module Rets
       rescue URI::InvalidURIError
         raise MalformedResponse, "Unable to parse capability URL: #{name} => #{val.inspect}"
       end
-      uri.to_s
+      uri.to_s.gsub("http://data.crea","http://sample.data.crea") if login_url.include?("sample")
     end
 
     def extract_capabilities(document)
